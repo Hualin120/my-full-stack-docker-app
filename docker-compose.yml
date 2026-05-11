@@ -15,10 +15,9 @@ services:
       - "80:80"
 
     depends_on:
-
       - frontend
-
-      - backend
+      - backend-1
+      - backend-2
 
   frontend:
 
@@ -30,12 +29,14 @@ services:
 
     container_name: frontend-container
 
-  backend:
-
+  backend-1:
     build:
-
       context: ./backend
-
       dockerfile: Dockerfile
+    container_name: backend-container-1
 
-    container_name: backend-container
+  backend-2:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-container-2
